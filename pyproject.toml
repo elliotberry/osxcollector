@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "osxcollector"
+version = "2.0.0"
+description = "A forensic evidence collection toolkit for macOS"
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.11"
+authors = [
+  { name = "Yelp Security", email = "opensource@yelp.com" },
+]
+keywords = ["forensics", "macos", "incident-response", "dfir"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: MacOS X",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: MacOS :: MacOS X",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.optional-dependencies]
+macho = ["macholib>=1.16"]
+xattr = ["xattr>=0.10"]
+dev = [
+  "coverage>=7.4",
+  "macholib>=1.16",
+  "mypy>=1.8",
+  "pre-commit>=3.6",
+  "pytest>=8.0",
+  "pytest-cov>=4.1",
+  "ruff>=0.3",
+]
+
+[project.scripts]
+osxcollector = "osxcollector.cli:main"
+
+[project.urls]
+Changelog = "https://github.com/YelpArchive/osxcollector/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/YelpArchive/osxcollector"
+
+[tool.setuptools.packages.find]
+include = ["osxcollector*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["*_test.py", "test_*.py"]
+
+[tool.coverage.run]
+branch = true
+source = ["osxcollector"]
+omit = ["setup.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = [".tox", "virtualenv_run"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B905"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = false
+warn_unused_configs = true
+ignore_missing_imports = true
+pretty = true
+files = [
+  "osxcollector/cli.py",
+  "osxcollector/normalize.py",
+  "osxcollector/fileinfo.py",
+  "osxcollector/paths.py",
+  "osxcollector/dictutils.py",
+  "osxcollector/archive.py",
+]

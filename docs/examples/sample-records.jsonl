@@ -1,0 +1,3 @@
+{"osxcollector_incident_id":"osxcollect-2026_08_11-12_00_00","osxcollector_section":"version","osxcollector_version":"2.0.0"}
+{"osxcollector_incident_id":"osxcollect-2026_08_11-12_00_00","osxcollector_section":"system_info","sysname":"Darwin","nodename":"host.local","release":"25.6.0","version":"Darwin Kernel Version 25.6.0","machine":"arm64","fde":true}
+{"osxcollector_incident_id":"osxcollect-2026_08_11-12_00_00","osxcollector_section":"startup","osxcollector_subsection":"launch_agents","label":"com.example.agent","program":"/usr/local/bin/example","file_path":"/usr/local/bin/example","md5":"...","sha1":"...","sha2":"..."}

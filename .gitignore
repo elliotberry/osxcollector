@@ -4,4 +4,14 @@
 .DS_Store
 .idea/
 virtualenv_run/
+.venv/
 .coverage
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+coverage-html/
+dist/
+build/
+osxcollect-*/
+*.tar.gz
+*.sha256

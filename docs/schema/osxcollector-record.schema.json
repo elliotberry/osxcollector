@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/YelpArchive/osxcollector/docs/schema/osxcollector-record.schema.json",
+  "title": "OSXCollector JSONL record",
+  "type": "object",
+  "description": "One line of OSXCollector JSONL output. Additional properties are allowed per section.",
+  "properties": {
+    "osxcollector_incident_id": {
+      "type": "string",
+      "description": "Shared ID for all records from one collection run."
+    },
+    "osxcollector_section": {
+      "type": "string",
+      "description": "Primary collection section name."
+    },
+    "osxcollector_subsection": {
+      "type": "string",
+      "description": "Optional finer-grained section name."
+    },
+    "osxcollector_username": {
+      "type": "string",
+      "description": "User associated with a per-home-directory record."
+    },
+    "osxcollector_error": {
+      "type": "string"
+    },
+    "osxcollector_warn": {
+      "type": "string"
+    },
+    "file_path": {
+      "type": "string"
+    },
+    "md5": {
+      "type": "string"
+    },
+    "sha1": {
+      "type": "string"
+    },
+    "sha2": {
+      "type": "string"
+    },
+    "atime": {
+      "type": "string"
+    },
+    "mtime": {
+      "type": "string"
+    },
+    "ctime": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
