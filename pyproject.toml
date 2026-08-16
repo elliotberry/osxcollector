@@ -80,6 +80,8 @@ ignore_missing_imports = true
 pretty = true
 files = [
   "osxcollector/cli.py",
+  "osxcollector/console.py",
+  "osxcollector/logging_jsonl.py",
   "osxcollector/normalize.py",
   "osxcollector/fileinfo.py",
   "osxcollector/paths.py",

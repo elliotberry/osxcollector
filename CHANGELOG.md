@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Live stderr dialogue during collection: start banner, per-section progress, archive phases, and a formatted summary (records, warnings, errors, output path, SHA-256).
+- Warnings now print to stderr by default (still recorded as `osxcollector_warn` in JSONL).
+
+### Changed
+
+- Errors and exceptions on stderr are human-readable (`k=v` context, no Python dict `repr` or traceback blobs). JSONL `osxcollector_error` strings are likewise readable; debug mode (`-d`) still dumps Extra context and tracebacks.
+- Refusing a live run without root no longer writes a JSONL error record to stdout.
+
 ## [2.0.0] - 2026-08-11
 
 ### Breaking
@@ -23,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Safer SQLite handling (read-only URI attempts, tempfile copies, identifier validation).
 - GitHub Actions CI on macOS, ruff, mypy, modern pre-commit.
 - CLI flags: `--list-sections`, `--outdir`, `--no-archive`, `--timeout`.
+- Default output directory is `~/osxcollector-data` (created if missing).
 - JSON Schema for common JSONL fields under `docs/schema/`.
 
 ### Changed

@@ -19,10 +19,29 @@ sudo osxcollector
 
 ```shell
 $ sudo osxcollector
-Wrote 35394 lines.
-Output in osxcollect-2026_08_11-12_00_00.tar.gz
-SHA-256 <digest>
+OSXCollector 2.0.0
+  incident   osxcollect-2026_08_11-12_00_00
+  root       /
+  output     /Users/you/osxcollector-data/osxcollect-2026_08_11-12_00_00
+  sections   24  (skipping codesign, full_hash)
+
+  [pre]  Collecting evidence metadata
+  [ 1/24] version                 1 record    0.0s
+  [ 2/24] system_info             1 record    0.1s
+  ...
+  [post]  Archiving system logs
+  [post]  Unified logs (--last 1h, timeout 120s)
+  [post]  Compressing archive
+
+Done in 42.3s
+  records   35394
+  warnings  18
+  errors    0
+  archive   /Users/you/osxcollector-data/osxcollect-2026_08_11-12_00_00.tar.gz
+  sha256    <digest>
 ```
+
+Progress, warnings, and errors go to **stderr**. The incident JSONL is written to the output directory (then archived). Missing optional paths show as compact warnings; they are also stored as `osxcollector_warn` records.
 
 **Note:** Live collection against `/` requires root. Offline imaging uses `-p /path/to/mounted/volume` and does not require root for the collector process itself (you still need permission to read the image).
 
@@ -40,10 +59,10 @@ pip install -e '.[macho]'
 | `-p ROOT` | Collect against a mounted filesystem image |
 | `-s SECTION` | Run only named section(s); repeatable |
 | `--list-sections` | Print section names |
-| `--outdir DIR` | Where to write the archive |
+| `--outdir DIR` | Where to write the archive (default `~/osxcollector-data`) |
 | `--no-archive` | Keep the incident directory; skip `.tar.gz` |
 | `-c` / `-l` | Include cookie / localStorage **values** (sensitive) |
-| `-d` | Debug mode |
+| `-d` | Debug: Extra context dumps, tracebacks, and pdb breakpoints |
 
 Example:
 

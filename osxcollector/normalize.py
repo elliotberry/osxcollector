@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import calendar
-import sys
 from datetime import datetime, timedelta
 from numbers import Number
 from typing import Any
 
 from osxcollector.debug import debugbreak
+from osxcollector.logging_jsonl import Logger
 
 DATETIME_2001 = datetime(2001, 1, 1)
 DATETIME_1970 = datetime(1970, 1, 1)
@@ -120,7 +120,7 @@ def normalize_val(val: Any, key: str | None = None) -> Any:
         debugbreak()
         return repr(val)
     except Exception as normalize_val_e:
-        sys.stderr.write(f"[ERROR] normalize_val {normalize_val_e!r}\n")
+        Logger.log_error(f"normalize_val: {normalize_val_e!r}")
         debugbreak()
         return repr(val)
 
